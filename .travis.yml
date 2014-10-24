@@ -8,4 +8,5 @@ install:
   - sudo apt-get install -qq perl libconfig-tiny-perl libwww-perl
 
 script:
+  - git checkout master
   - git-buildpackage --git-verbose --git-notify=off --git-upstream-branch=master --git-force-create --git-upstream-tag=master -i -us -uc
