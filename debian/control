@@ -1,0 +1,13 @@
+Source: lfd-bld-reporter
+Section: net
+Priority: optional
+Maintainer: Volodymyr Kolesnykov <volodymyr@wildwolf.name>
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.9.5
+
+Package: lfd-bld-reporter
+Architecture: all
+Depends: ${misc:Depends}, ${perl:Depends}, perl, libconfig-tiny-perl, libwww-perl
+Description: Blocklist.de report submitter - LFD integration
+ This package allows for submitting reports from LFD to
+ Blocklist.de
