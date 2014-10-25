@@ -2,8 +2,23 @@
 
 use strict;
 use warnings;
+use POSIX ();
 use Config::Tiny;
 use LWP::UserAgent;
+
+my $config = Config::Tiny->new;
+$config    = Config::Tiny->read('/etc/lfd-bld-reporter/config.ini');
+
+if ($> == 0) {
+	my ($pwName, $pwCode, $pwUid, $pwGid) = getpwnam('daemon');
+	if ($pwGid) {
+		POSIX::setgid($pwGid);
+	}
+
+	if ($pwUid) {
+		POSIX::setuid($pwUid);
+	}
+}
 
 my $ip      = $ARGV[0] || '';
 my $ports   = $ARGV[1] || '';
@@ -14,8 +29,6 @@ my $msg     = $ARGV[5] || '';
 my $logs    = $ARGV[6] || '';
 my $trigger = $ARGV[7] || '';
 
-my $config = Config::Tiny->new;
-$config    = Config::Tiny->read('/etc/lfd-bld-reporter/config.ini');
 
 my $apikey = $config->{submitter}->{apikey};
 my $server = $config->{submitter}->{server};
