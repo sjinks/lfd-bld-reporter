@@ -4,6 +4,7 @@ Priority: optional
 Maintainer: Volodymyr Kolesnykov <volodymyr@wildwolf.name>
 Build-Depends: debhelper (>= 7.0.50~)
 Standards-Version: 3.9.5
+Vcs-Git: https://github.com/sjinks/lfd-bld-reporter.git
 
 Package: lfd-bld-reporter
 Architecture: all
