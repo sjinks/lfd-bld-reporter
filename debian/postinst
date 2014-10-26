@@ -15,8 +15,13 @@ set -e
 
 case "$1" in
 	configure)
-		dpkg-statoverride --update --quiet --add root root 0700 /etc/lfd-bld-reporter
-		dpkg-statoverride --update --quiet --add root root 0640 /etc/lfd-bld-reporter/config.ini
+		if ! dpkg-statoverride --list /etc/lfd-bld-reporter >/dev/null 2>&1; then
+			dpkg-statoverride --update --quiet --add root root 0700 /etc/lfd-bld-reporter
+		fi
+
+		if ! dpkg-statoverride --list /etc/lfd-bld-reporter/config.ini >/dev/null 2>&1; then
+			dpkg-statoverride --update --quiet --add root root 0640 /etc/lfd-bld-reporter/config.ini
+		fi
 	;;
 
 	abort-upgrade|abort-remove|abort-deconfigure)

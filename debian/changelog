@@ -1,3 +1,9 @@
+lfd-bld-reporter (0.2) trusty; urgency=low
+
+  * Be careful with dpkg-statoverride
+
+ -- Volodymyr Kolesnykov <volodymyr@wildwolf.name>  Sun, 26 Oct 2014 21:42:00 +0200
+
 lfd-bld-reporter (0.1) trusty; urgency=low
 
   * Initial release
